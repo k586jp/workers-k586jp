@@ -36,5 +36,8 @@ async function main() {
     doc.innerHTML = marked.parse(text);
     df.appendChild(doc);
     addDiary.appendChild(df);
+
+    Prism.highlightAll();
+    mermaid.init(undefined, document.querySelectorAll('.mermaid'));
 }
 main().catch(console.error)
