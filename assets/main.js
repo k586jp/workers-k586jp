@@ -13,9 +13,7 @@ function addEventListenerPromise(eventTarget, eventName) {
 async function importTextFile(filename) {
 
     const file = await fetch(filename);
-    const text = await file.text();
-
-    return text;
+    return await file.text();
 
 }
 
@@ -29,13 +27,14 @@ function addMermaidClass(code) {
 
 async function main() {
 
-    const addDiary = document.getElementById('diary');
+    const addDiary = document.getElementById('main');
     const df = document.createDocumentFragment();
 
     const text = await importTextFile('main.md');
     const doc = document.createElement('div');
 
     marked.use({ renderer: { code: addMermaidClass } });
+    marked.setOptions({ breaks: true });
     doc.innerHTML = marked.parse(text);
 
     df.appendChild(doc);

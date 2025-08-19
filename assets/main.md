@@ -1,4 +1,29 @@
-### マークダウンが使えます
+## 便利リンク
+
+### 外部記事
+
+- Zenn
+  https://zenn.dev/k586
+
+### SNS
+
+- Twitter (X)
+  https://twitter.com/k586
+- Bluesky
+  https://bsky.app/profile/k586.jp
+- くるっぷ (未使用)
+  https://crepu.net/user/k586
+- マストドンJP (未使用)
+  https://mstdn.jp/@586
+- Pawoo (未使用)
+  https://pawoo.net/@586
+
+### 連絡先
+
+- mail(a)k586.jp
+
+
+## マークダウンのテスト
 
 ああああ、テストテスト
 
