@@ -17,7 +17,7 @@ export default main();
 
 async function indexHtml(context: c) {
     const url = new URL('/index.html', 'https://example.com');
-    const response = await context.env.ASSETS.fetch(url);
-    const html = await response.text();
-    return context.html(html);
+    const file = await context.env.ASSETS.fetch(url);
+    const text = await file.text();
+    return context.html(text);
 }
