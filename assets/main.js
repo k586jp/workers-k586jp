@@ -28,16 +28,21 @@ function addMermaidClass(code) {
 }
 
 async function main() {
+
     const addDiary = document.getElementById('diary');
     const df = document.createDocumentFragment();
+
     const text = await importTextFile('main.md');
     const doc = document.createElement('div');
+
     marked.use({ renderer: { code: addMermaidClass } });
     doc.innerHTML = marked.parse(text);
+
     df.appendChild(doc);
     addDiary.appendChild(df);
 
     Prism.highlightAll();
+    mermaid.initialize({ securityLevel: 'loose', theme: 'neutral' });
     mermaid.init(undefined, document.querySelectorAll('.mermaid'));
 }
 main().catch(console.error);
