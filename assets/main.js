@@ -15,7 +15,7 @@ async function main() {
 
     Prism.highlightAll();
     mermaid.initialize({ securityLevel: 'loose', theme: 'neutral' });
-    mermaid.init(undefined, document.getElementsByClassName('mermaid'));
+    mermaid.init(undefined, document.getElementsByClassName('language-mermaid'));
 }
 main().catch(console.error);
 
@@ -41,7 +41,7 @@ async function importTextFile(filename) {
 
 function addMermaidClass(code) {
     if (code.lang === 'mermaid') {
-        return '<pre class="mermaid">' + code.text + '</pre>';
+        return '<pre class="language-mermaid">' + code.text + '</pre>';
     } else {
         return '<pre><code class="language-' + code.lang + ' line-numbers">' + code.text + '</code></pre>';
     }
