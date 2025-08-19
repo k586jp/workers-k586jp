@@ -1,3 +1,25 @@
+async function main() {
+
+    const addDiary = document.getElementById('main');
+    const df = document.createDocumentFragment();
+
+    const text = await importTextFile('main.md');
+    const doc = document.createElement('div');
+
+    marked.use({ renderer: { code: addMermaidClass } });
+    marked.setOptions({ breaks: true });
+    doc.innerHTML = marked.parse(text);
+
+    df.appendChild(doc);
+    addDiary.appendChild(df);
+
+    Prism.highlightAll();
+    mermaid.initialize({ securityLevel: 'loose', theme: 'neutral' });
+    mermaid.init(undefined, document.getElementsByClassName('mermaid'));
+}
+main().catch(console.error);
+
+
 /**
  * イベントリスナーを Promise 化
  * @param eventTarget イベントのターゲット
@@ -24,24 +46,3 @@ function addMermaidClass(code) {
         return '<pre><code class="language-' + code.lang + ' line-numbers">' + code.text + '</code></pre>';
     }
 }
-
-async function main() {
-
-    const addDiary = document.getElementById('main');
-    const df = document.createDocumentFragment();
-
-    const text = await importTextFile('main.md');
-    const doc = document.createElement('div');
-
-    marked.use({ renderer: { code: addMermaidClass } });
-    marked.setOptions({ breaks: true });
-    doc.innerHTML = marked.parse(text);
-
-    df.appendChild(doc);
-    addDiary.appendChild(df);
-
-    Prism.highlightAll();
-    mermaid.initialize({ securityLevel: 'loose', theme: 'neutral' });
-    mermaid.init(undefined, document.querySelectorAll('.mermaid'));
-}
-main().catch(console.error);
