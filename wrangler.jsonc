@@ -6,5 +6,11 @@
     "directory": "./assets/",
     "binding": "ASSETS",
     "html_handling": "none"
-  }
+  },
+  "routes": [
+    {
+      "pattern": "k586.jp",
+      "custom_domain": true
+    }
+  ]
 }

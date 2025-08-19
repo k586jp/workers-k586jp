@@ -1,1 +1,1 @@
-https://jp.k586.workers.dev
+https://k586.jp
