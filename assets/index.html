@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="author" content="k586">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <meta name="format-detection" content="telephone=no,email=no,address=no">
+    <meta name="description" content="趣味のサイト。ウェブ、音楽、漫画の話など。">
+    <!-- meta property="og:title" content="k586.jp" -->
+    <meta property="og:type" content="website">
+    <!-- meta property="og:url" content="https://k586.jp/" -->
+    <meta property="og:locale" content="ja_JP">
+    <!-- meta http-equiv="content-security-policy" content="script-src 'self' *.cloudflare.com *.cloudflareinsights.com" -->
+    <title>diary</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-okaidia.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/16.2.0/lib/marked.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/prism.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mermaid/11.10.0/mermaid.min.js"></script>
+</head>
+<body>
+<header>
+    <h1>diary (作成中)</h1>
+</header>
+<main id="diary"></main>
+<footer>
+    <hr>
+    <p><a href="https://k586.jp">k586.jp</a></p>
+</footer>
+</body>
+<script>
+    function main() {
+        marked.use({
+            renderer: {
+                code: function (code) {
+                    if (code.lang === 'mermaid') {
+                        return '<pre class="mermaid">' + code.text + '</pre>';
+                    } else {
+                        return '<pre><code class="language-' + code.lang + '">' + code.text + '</code></pre>';
+                    }
+                }
+            }
+        });
+        const addDiary = document.getElementById('diary');
+        const df = document.createDocumentFragment();
+        const str = "### マークダウンが使えます\n\n" +
+            "ああああ、テストテスト\n\n" +
+            "- 1\n" +
+            "- 2\n" +
+            "- 3\n\n" +
+            "```JavaScript\n" +
+            "/**\n" +
+            "* XMLファイルを読み込んで記事単位で分割\n" +
+            "* @param {string} filename 読込ファイル\n" +
+            "* @return {Array} articleArray 記事単位の配列\n" +
+            "*/\n" +
+            "async function diaryImportFile(filename) {\n" +
+            "\n" +
+            "const parser = new DOMParser();\n" +
+            "\n" +
+            "const file = await fetch(filename);\n" +
+            "const getText = await file.text();\n" +
+            "const parseXml = await parser.parseFromString(getText, 'text/xml');\n" +
+            "\n" +
+            "const section = parseXml.querySelectorAll('article');\n" +
+            "const articleArray = Array.from(section);\n" +
+            "\n" +
+            "return articleArray;\n" +
+            "\n" +
+            "}\n" +
+            "```\n\n" +
+            "```mermaid\ngraph TD;\n    A-->B;\n    A-->C;\n    B-->D;\n    C-->D;\n```";
+        const doc = document.createElement('div');
+        doc.innerHTML = marked.parse(str);
+        df.appendChild(doc);
+        addDiary.appendChild(df);
+    }
+    main();
+</script>
+</html>

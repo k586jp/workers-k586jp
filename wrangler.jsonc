@@ -1,0 +1,10 @@
+{
+  "name": "jp",
+  "main": "src/index.ts",
+  "compatibility_date": "2025-08-19",
+  "assets": {
+    "directory": "./assets/",
+    "binding": "ASSETS",
+    "html_handling": "none"
+  }
+}
