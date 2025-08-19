@@ -6,7 +6,7 @@
 - 2
 - 3
 
-```JavaScript
+```TypeScript
 import { Hono, Context as c } from 'hono';
 
 function main() {

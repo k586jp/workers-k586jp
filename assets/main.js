@@ -23,7 +23,7 @@ function addMermaidClass(code) {
     if (code.lang === 'mermaid') {
         return '<pre class="mermaid">' + code.text + '</pre>';
     } else {
-        return '<pre><code class="language-' + code.lang + '">' + code.text + '</code></pre>';
+        return '<pre><code class="language-' + code.lang + ' line-numbers">' + code.text + '</code></pre>';
     }
 }
 
@@ -40,4 +40,4 @@ async function main() {
     Prism.highlightAll();
     mermaid.init(undefined, document.querySelectorAll('.mermaid'));
 }
-main().catch(console.error)
+main().catch(console.error);
