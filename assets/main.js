@@ -4,9 +4,9 @@
  */
 async function main() {
 
-    const addMain = document.getElementById('main');
+    const mainContents = document.getElementById('main');
     const df = await makeDocumentFragment();
-    addMain.appendChild(df);
+    mainContents.appendChild(df);
 
     Prism.highlightAll();
     mermaid.initialize({ securityLevel: 'loose', theme: 'dark' });
@@ -27,7 +27,7 @@ async function makeDocumentFragment() {
     const text = await importTextFile('main.md');
     const doc = document.createElement('div');
 
-    marked.use({ renderer: { code: addMermaidClass } });
+    marked.use({ renderer: { code: appendClass } });
     marked.setOptions({ breaks: true });
     doc.innerHTML = marked.parse(text);
 
@@ -63,11 +63,11 @@ async function importTextFile(filename) {
 }
 
 /**
- * コードエリアに Class を指定
+ * コードエリアへ Class を追加
  * @param code コードの種類
  * @returns {string} 変換後の HTML
  */
-function addMermaidClass(code) {
+function appendClass(code) {
 
     if (code.lang === 'mermaid' || code.lang === 'Mermaid') {
         return '<pre class="language-mermaid">' + code.text + '</pre>';
