@@ -9,7 +9,7 @@ async function main() {
     addMain.appendChild(df);
 
     Prism.highlightAll();
-    mermaid.initialize({ securityLevel: 'loose', theme: 'neutral' });
+    mermaid.initialize({ securityLevel: 'loose', theme: 'dark' });
     mermaid.init(undefined, document.getElementsByClassName('language-mermaid'));
 
 }
