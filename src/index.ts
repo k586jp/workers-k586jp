@@ -15,6 +15,7 @@ function main() {
 }
 export default main();
 
+// ################################################################
 
 async function indexHtml(context: c) {
     const html = htmlText(context, '/index.js');
@@ -26,12 +27,18 @@ async function articleHtml(context: c) {
     return context.html(html);
 }
 
+// ================================================================
+
 async function htmlText(context: c, jsFile: string) {
-    const main_url = new URL('/main.html', 'https://example.com');
-    const main_file = await context.env.ASSETS.fetch(main_url);
-    const main_text = await main_file.text();
-    const bottom_url = new URL('/bottom.html', 'https://example.com');
-    const bottom_file = await context.env.ASSETS.fetch(bottom_url);
-    const bottom_text = await bottom_file.text();
-    return main_text + '<script src="' + jsFile + '"></script>' + bottom_text;
+    const array: Promise<string>[] = [];
+    array.push(fetchURL(context, '/main.html'));
+    array.push(fetchURL(context, '/bottom.html'));
+    const result = await Promise.all(array);
+    return result[0] + '<script src="' + jsFile + '"></script>' + result[1];
+}
+
+async function fetchURL(context: c, page: string) {
+    const url = new URL(page, 'https://example.com');
+    const file = await context.env.ASSETS.fetch(url);
+    return await file.text();
 }
