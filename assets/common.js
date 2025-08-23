@@ -6,6 +6,7 @@ async function main() {
 
     const mainContents = document.getElementById('main');
     const df = await makeDocumentFragment();
+    mainContents.textContent = '';
     mainContents.appendChild(df);
 
     Prism.highlightAll();
@@ -24,12 +25,11 @@ main().catch(console.error);
 async function makeDocumentFragment() {
 
     const df = document.createDocumentFragment();
-    const text = await importTextFile('main.md');
     const doc = document.createElement('div');
 
     marked.use({ renderer: { code: appendClass } });
     marked.setOptions({ breaks: true });
-    doc.innerHTML = marked.parse(text);
+    doc.innerHTML = marked.parse(await fetchJson());
 
     df.appendChild(doc);
     return df;
@@ -47,18 +47,6 @@ function addEventListenerPromise(eventTarget, eventName) {
     return new Promise(function (resolve) {
         eventTarget.addEventListener(eventName, function (event) { resolve(event); }, false);
     });
-
-}
-
-/**
- * テキストファイルをインポート
- * @param filename ファイル名
- * @returns {Promise<string>} テキスト
- */
-async function importTextFile(filename) {
-
-    const file = await fetch(filename);
-    return await file.text();
 
 }
 
