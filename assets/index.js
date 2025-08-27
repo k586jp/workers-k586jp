@@ -12,7 +12,7 @@ async function fetchJson() {
         list_array.push('<a href="/article/' + article.id + '">[' + article.created_at + ']  ' + article.title + '</a>');
 
     }
-    const list = list_array.join('<br>\n');
+    const list = list_array.join('\n');
 
     const prof_url = 'https://api.k586.jp/article/id.php';
     const prof_headers = {
