@@ -17,6 +17,6 @@ async function fetchJson() {
     const response = await fetch(url, request);
     const json = await response.json();
 
-    return json.text;
+    return [ json ];
 
 }

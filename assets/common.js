@@ -25,13 +25,28 @@ main().catch(console.error);
 async function makeDocumentFragment() {
 
     const df = document.createDocumentFragment();
-    const doc = document.createElement('div');
+    const jsonArray = await fetchJson();
+    const length = jsonArray.length;
 
-    marked.use({ renderer: { code: appendClass } });
-    marked.setOptions({ breaks: true });
-    doc.innerHTML = marked.parse(await fetchJson());
+    for (let i = 0; i < length; i++) {
 
-    df.appendChild(doc);
+        marked.use({ renderer: { code: appendClass } });
+        marked.setOptions({ breaks: true });
+
+        const title = jsonArray[i].title;
+        const date = jsonArray[i].created_at;
+        const text = marked.parse(jsonArray[i].text);
+
+        if (i === 0 && length === 1) {
+            document.title = title + ' | k586.jp';
+        }
+
+        const doc = document.createElement('div');
+        doc.innerHTML = '<h6>' + date + '</h6><h2>' + title + '</h2>' + text;
+        df.appendChild(doc);
+
+    }
+
     return df;
 
 }
