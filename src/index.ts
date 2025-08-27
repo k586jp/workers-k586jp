@@ -6,7 +6,8 @@ function main() {
     const page = new Hono();
 
     page.get('/', indexHtml);
-    page.get('/article/', articleHtml);
+    page.get('/article/', articleListHtml);
+    page.get('/article/:id', articleHtml);
 
     app.route('/', page);
 
@@ -22,8 +23,13 @@ async function indexHtml(context: c) {
     return context.html(html);
 }
 
-async function articleHtml(context: c) {
+async function articleListHtml(context: c) {
     const html = htmlText(context, '/article.js');
+    return context.html(html);
+}
+
+async function articleHtml(context: c) {
+    const html = htmlText(context, '/id.js');
     return context.html(html);
 }
 
