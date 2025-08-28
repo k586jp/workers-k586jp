@@ -25,7 +25,6 @@ main().catch(console.error);
 async function makeDocumentFragment() {
 
     const df = document.createDocumentFragment();
-    const doc = document.createElement('div');
     const jsonArray = await fetchJson();
     const length = jsonArray.length;
 
@@ -43,15 +42,18 @@ async function makeDocumentFragment() {
             document.title = title + ' | k586.jp';
         }
 
+        const doc = document.createElement('div');
         doc.innerHTML = '<h6>' + date + '</h6><h1><a href="/article/' + id + '">' + title + '</a></h1>' + marked.parse(text);
+        df.appendChild(doc);
 
     }
 
     if (length === 0) {
+        const doc = document.createElement('div');
         doc.innerHTML = '<h3>[!] 記事がありません。</h3>';
+        df.appendChild(doc);
     }
 
-    df.appendChild(doc);
     return df;
 
 }

@@ -12,7 +12,7 @@ async function fetchJson() {
     for (let i = 0; i < list_length; i++) {
 
         const article = list_json[i];
-        list_array.push('- <a href="/article/' + article.id + '">[' + article.created_at + ']  ' + article.title + '</a>');
+        list_array.push('- <a href="/article/' + article.id + '">[' + article.created_at + '] ' + article.title + '</a>');
 
     }
     const list = list_array.join('\n');
