@@ -33,16 +33,17 @@ async function makeDocumentFragment() {
         marked.use({ renderer: { code: appendClass } });
         marked.setOptions({ breaks: true });
 
+        const id = jsonArray[i].id;
         const title = jsonArray[i].title;
         const date = jsonArray[i].created_at;
         const text = marked.parse(jsonArray[i].text);
 
-        if (i === 0 && length === 1) {
+        if (i === 0 && length === 1 && id.length > 0) {
             document.title = title + ' | k586.jp';
         }
 
         const doc = document.createElement('div');
-        doc.innerHTML = '<h6>' + date + '</h6><h2>' + title + '</h2>' + text;
+        doc.innerHTML = '<h6>' + date + '</h6><h1><a href="/article/' + id + '">' + title + '</a></h1>' + text;
         df.appendChild(doc);
 
     }
