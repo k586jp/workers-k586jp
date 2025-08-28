@@ -1,7 +1,10 @@
 async function fetchJson() {
 
-    const list_url = 'https://api.k586.jp/article/?title=1';
-    const list_response = await fetch(list_url);
+    const list_url = 'https://api.k586.jp/article/';
+    const list_request = {
+        method: 'POST'
+    };
+    const list_response = await fetch(list_url, list_request);
     const list_json = await list_response.json();
 
     const list_length = list_json.length;
@@ -9,7 +12,7 @@ async function fetchJson() {
     for (let i = 0; i < list_length; i++) {
 
         const article = list_json[i];
-        list_array.push('<a href="/article/' + article.id + '">[' + article.created_at + ']  ' + article.title + '</a>');
+        list_array.push('- <a href="/article/' + article.id + '">[' + article.created_at + ']  ' + article.title + '</a>');
 
     }
     const list = list_array.join('\n');
