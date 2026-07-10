@@ -31,7 +31,7 @@ async function makeDocumentFragment() {
     for (let i = 0; i < length; i++) {
 
         marked.use({ renderer: { code: appendClass } });
-        marked.setOptions({ breaks: true });
+        marked.setOptions({ gfm: true, breaks: true });
 
         const id = jsonArray[i].id;
         const title = jsonArray[i].title;
@@ -43,7 +43,7 @@ async function makeDocumentFragment() {
         }
 
         const doc = document.createElement('div');
-        doc.innerHTML = '<h6>' + date + '</h6><h1><a href="/article/' + id + '">' + title + '</a></h1>' + marked.parse(text);
+        doc.innerHTML = '<h6>' + date + '</h6><h1><a href="/article/' + id + '">' + title + '</a></h1>' + DOMPurify.sanitize(marked.parse(text));
         df.appendChild(doc);
 
     }
