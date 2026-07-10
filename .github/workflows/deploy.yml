@@ -9,7 +9,7 @@ jobs:
     name: Deploy
     steps:
       - name: Checkout
-        uses: actions/checkout@v5
+        uses: actions/checkout@v7
       - name: Install
         run: npm install wrangler
       - name: npm ls
