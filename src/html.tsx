@@ -8,7 +8,7 @@ export function PageLayout(props: Article[]) {
     if (count === 0) {
         articlesHtml = '<div><h3>[!] 記事がありません。</h3></div>';
     } else if (!props[0].content_md) {
-        articlesHtml = '<div><h6>1970-01-01 00:00:00</h6><h1><a href="/article/">新着記事一覧</a></h1><ul>';
+        articlesHtml = '<div><h1><a href="/article/">新着記事一覧</a></h1><ul>';
         for (let i = 0; i < count; i++) {
             articlesHtml += `<li><a href="/article/${props[i].id}">[${props[i].created_at}] ${props[i].title}</a></li>`;
         }

@@ -19,7 +19,7 @@ header {
     line-height: 1.25;
 }
 header > a, h1 > a, footer > p > a {
-    color: #fff !important;
+    color: var(--fgColor-default) !important;
     text-decoration: none !important;
 }
 
