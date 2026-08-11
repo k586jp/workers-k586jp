@@ -4,6 +4,14 @@
  */
 async function main() {
 
+    const ev = await addEventListenerPromise(document, 'DOMContentLoaded');
+    const timeArray = ev.getElementsByTagName('time');
+    const length = timeArray.length;
+    for (let i = 0; i < length; i++) {
+        const utc = new Date(timeArray[i].getAttribute('datetime'));
+        console.log(utc.toLocaleString());
+    }
+
     Prism.highlightAll();
     mermaid.initialize({ securityLevel: 'loose', theme: 'dark' });
     mermaid.init(undefined, document.getElementsByClassName('language-mermaid'));
