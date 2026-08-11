@@ -3,11 +3,19 @@
   "name": "jp",
   "main": "src/index.ts",
   "compatibility_date": "2026-07-10",
+  "workers_dev": false,
   "assets": {
     "directory": "./assets/",
     "binding": "ASSETS",
     "html_handling": "none"
   },
+  "services": [
+    {
+      "binding": "K586_ARTICLES",
+      "service": "workers-db",
+      "entrypoint": "K586Articles"
+    }
+  ],
   "routes": [
     {
       "pattern": "k586.jp",
