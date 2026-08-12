@@ -21,7 +21,7 @@ async function main() {
 
     const mermaidArray = document.getElementsByClassName('language-mermaid');
     if (mermaidArray.length > 0) {
-        await loadScript('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js');
+        await loadScript('https://cdn.jsdelivr.net/npm/@mermaid-js/tiny@11.12.0/dist/mermaid.tiny.min.js');
         window.mermaid.initialize({ startOnLoad: false, securityLevel: 'loose', theme: 'dark' });
         await window.mermaid.run({ nodes: document.getElementsByClassName('language-mermaid') });
     }
