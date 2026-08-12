@@ -10,12 +10,12 @@ export function PageLayout(props: Article[]) {
     } else if (!props[0].content_md) {
         articlesHtml = '<div><h1><a href="/article/">新着記事一覧</a></h1><ul>';
         for (let i = 0; i < count; i++) {
-            articlesHtml += `<li><a href="/article/${props[i].id}">[<time datetime="${props[i].created_at}">${props[i].created_at}</time>] ${props[i].title}</a></li>`;
+            articlesHtml += `<li><a href="/article/${props[i].id}">[<time datetime="${props[i].created_at}">XXXX/XX/XX XX:XX</time>] ${props[i].title}</a></li>`;
         }
         articlesHtml += '</ul></div>';
     } else {
         for (let i = 0; i < count; i++) {
-            articlesHtml += `<div><h6><time datetime="${props[i].created_at}">${props[i].created_at}</time></h6><h1><a href="/article/${props[i].id}">${props[i].title}</a></h1>${props[i].content_html}</div>`;
+            articlesHtml += `<div><h6><time datetime="${props[i].created_at}">XXXX/XX/XX XX:XX</time></h6><h1><a href="/article/${props[i].id}">${props[i].title}</a></h1>${props[i].content_html}</div>`;
         }
     }
 
