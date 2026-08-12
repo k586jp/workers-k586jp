@@ -1,5 +1,5 @@
-import {Hono, Context as c, Next} from 'hono';
-import { secureHeaders, NONCE } from 'hono/secure-headers';
+import { Hono, Context as c, Next } from 'hono';
+import { secureHeaders, NONCE, SecureHeadersVariables } from 'hono/secure-headers';
 import { PageLayout, EditPageLayout } from './html';
 import type { Service } from '@cloudflare/workers-types'
 import type { K586Articles, Article } from '../../workers-db/src/index';
@@ -8,9 +8,7 @@ type Env = {
     Bindings: {
         K586_ARTICLES: Service<K586Articles>
     },
-    Variables: {
-        secureHeadersNonce: string
-    }
+    Variables: SecureHeadersVariables
 };
 
 function main() {
@@ -18,7 +16,7 @@ function main() {
     const app = new Hono();
     const page = new Hono<Env>();
 
-    page.use('*', useSecureHeaders);
+    page.get('*', useSecureHeaders);
 
     page.get('/', indexHtml);
     page.get('/article/', articleListHtml);
