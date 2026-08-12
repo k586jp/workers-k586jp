@@ -15,7 +15,7 @@ type Env = {
 
 function main() {
 
-    const app = new Hono<>();
+    const app = new Hono();
     const page = new Hono<Env>();
 
     page.use('*', useSecureHeaders);
