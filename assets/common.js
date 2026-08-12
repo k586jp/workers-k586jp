@@ -4,12 +4,11 @@
  */
 async function main() {
 
-    // await addEventListenerPromise(document, 'DOMContentLoaded');
     const timeArray = document.getElementsByTagName('time');
     const length = timeArray.length;
     for (let i = 0; i < length; i++) {
         const utc = new Date(timeArray[i].getAttribute('datetime'));
-        console.log(utc.toLocaleString());
+        timeArray[i].textContent = utc.toLocaleString(undefined, { dateStyle: "medium", timeStyle: "short" });
     }
 
     Prism.highlightAll();
