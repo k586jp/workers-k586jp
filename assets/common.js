@@ -4,8 +4,8 @@
  */
 async function main() {
 
-    const ev = await addEventListenerPromise(document, 'DOMContentLoaded');
-    const timeArray = ev.getElementsByTagName('time');
+    // await addEventListenerPromise(document, 'DOMContentLoaded');
+    const timeArray = document.getElementsByTagName('time');
     const length = timeArray.length;
     for (let i = 0; i < length; i++) {
         const utc = new Date(timeArray[i].getAttribute('datetime'));
@@ -30,7 +30,7 @@ main().catch(console.error);
 function addEventListenerPromise(eventTarget, eventName) {
 
     return new Promise(function (resolve) {
-        eventTarget.addEventListener(eventName, function (event) { resolve(event); }, false);
+        eventTarget.addEventListener(eventName, function (event) { resolve(event); }, { once: true });
     });
 
 }
