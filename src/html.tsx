@@ -42,9 +42,9 @@ export function PageLayout(props: Article[], nonce: string) {
         <meta property="og:url" content="https://k586.jp/">
         <meta property="og:locale" content="ja_JP">
         <title>${title}</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.9.0/github-markdown.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-okaidia.min.css">
-        <link rel="stylesheet" href="/common.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.9.0/github-markdown.min.css" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-okaidia.min.css" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="/common.css" media="print" onload="this.media='all'">
         <script nonce="${nonce}" src="https://cdn.jsdelivr.net/npm/@mermaid-js/tiny@11.12.0/dist/mermaid.tiny.min.js" defer></script>
         <script nonce="${nonce}" src="/common.js" defer></script>
     </head>
@@ -97,9 +97,9 @@ export function EditPageLayout(props: Article, nonce: string) {
         <meta property="og:url" content="https://k586.jp/">
         <meta property="og:locale" content="ja_JP">
         <title>記事の編集</title>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.9.0/github-markdown.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-okaidia.min.css">
-        <link rel="stylesheet" href="/common.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.9.0/github-markdown.min.css" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-okaidia.min.css" media="print" onload="this.media='all'">
+        <link rel="stylesheet" href="/common.css" media="print" onload="this.media='all'">
         <script nonce="${nonce}" src="https://cdn.jsdelivr.net/npm/@mermaid-js/tiny@11.12.0/dist/mermaid.tiny.min.js" defer></script>
         <script nonce="${nonce}" src="/common.js" defer></script>
     </head>
