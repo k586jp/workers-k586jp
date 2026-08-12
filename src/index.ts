@@ -13,6 +13,7 @@ function main() {
     const app = new Hono();
     const page = new Hono<{ Bindings: Bindings, Variables: { nonce: string } }>();
 
+    app.use('*', useSecureHeaders);
     page.use('*', useSecureHeaders);
 
     page.get('/', indexHtml);
