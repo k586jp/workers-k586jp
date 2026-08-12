@@ -19,7 +19,6 @@ async function main() {
         timeArray[i].textContent = utc.toLocaleString(undefined, timeFormat);
     }
 
-    Prism.highlightAll();
     mermaid.initialize({ securityLevel: 'loose', theme: 'dark' });
     mermaid.init(undefined, document.getElementsByClassName('language-mermaid'));
 

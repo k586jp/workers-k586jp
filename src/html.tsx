@@ -47,9 +47,6 @@ export function PageLayout(props: Article[]) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-okaidia.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/line-numbers/prism-line-numbers.min.css">
         <link rel="stylesheet" href="/common.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/prism.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-typescript.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@mermaid-js/tiny@11.12.0/dist/mermaid.tiny.min.js"></script>
     </head>
     <body class="markdown-body">
@@ -107,9 +104,6 @@ export function EditPageLayout(props: Article) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-okaidia.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/line-numbers/prism-line-numbers.min.css">
         <link rel="stylesheet" href="/common.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/prism.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/components/prism-typescript.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
         <script src="https://cdn.jsdelivr.net/npm/@mermaid-js/tiny@11.12.0/dist/mermaid.tiny.min.js"></script>
     </head>
     <body class="markdown-body">
