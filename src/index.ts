@@ -11,7 +11,7 @@ type Bindings = {
 function main() {
 
     const app = new Hono();
-    const page = new Hono<{ Bindings: Bindings }, { Variables: { nonce: string } }>();
+    const page = new Hono<{ Bindings: Bindings, Variables: { nonce: string } }>();
 
     page.use('*', useSecureHeaders);
 
