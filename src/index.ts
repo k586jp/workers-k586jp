@@ -16,7 +16,7 @@ function main() {
     const app = new Hono();
     const page = new Hono<Env>();
 
-    page.get('*', useSecureHeaders);
+    page.use('*', useSecureHeaders);
 
     page.get('/', indexHtml);
     page.get('/article/', articleListHtml);
@@ -44,19 +44,19 @@ async function articleListHtml(context: c) {
         page = Number(context.req.query('p')) || 0;
     }
     const json: Article[] = await context.env.K586_ARTICLES.getArticles(page);
-    return context.html(PageLayout(json, context.get('nonce')));
+    return context.html(PageLayout(json, context.get('secureHeadersNonce')));
 }
 
 async function articleHtml(context: c) {
     const id = context.req.param('id');
     const json: Article[] = await context.env.K586_ARTICLES.getArticles(id);
-    return context.html(PageLayout(json, context.get('nonce')));
+    return context.html(PageLayout(json, context.get('secureHeadersNonce')));
 }
 
 async function articleEditHtml(context: c) {
     const id = context.req.param('id');
     const json: Article = await context.env.K586_ARTICLES.getArticleEditMode(id);
-    return context.html(EditPageLayout(json, context.get('nonce')));
+    return context.html(EditPageLayout(json, context.get('secureHeadersNonce')));
 }
 
 // ================================================================
