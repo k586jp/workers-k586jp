@@ -20,7 +20,7 @@ async function main() {
     }
 
     mermaid.initialize({ securityLevel: 'loose', theme: 'dark' });
-    mermaid.init(undefined, document.getElementsByClassName('language-mermaid'));
+    mermaid.run({ nodes: document.getElementsByClassName('language-mermaid') });
 
 }
 main().catch(console.error);

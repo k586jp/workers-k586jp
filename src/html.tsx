@@ -45,10 +45,9 @@ export function PageLayout(props: Article[]) {
         <title>${title}</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.9.0/github-markdown.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-okaidia.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/line-numbers/prism-line-numbers.min.css">
         <link rel="stylesheet" href="/common.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@mermaid-js/tiny@11.12.0/dist/mermaid.tiny.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mermaid-js/tiny@11.12.0/dist/mermaid.tiny.min.js" defer></script>
+        <script src="/common.js" defer></script>
     </head>
     <body class="markdown-body">
         <div>
@@ -80,7 +79,6 @@ export function PageLayout(props: Article[]) {
                 <p><a href="https://k586.jp">© 2004-2026 k586.jp</a></p>
             </footer>
         </div>
-        <script src="/common.js"></script>
     </body>
 </html>`;
 }
@@ -103,10 +101,9 @@ export function EditPageLayout(props: Article) {
         <title>記事の編集</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.9.0/github-markdown.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-okaidia.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/line-numbers/prism-line-numbers.min.css">
         <link rel="stylesheet" href="/common.css">
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/plugins/line-numbers/prism-line-numbers.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@mermaid-js/tiny@11.12.0/dist/mermaid.tiny.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mermaid-js/tiny@11.12.0/dist/mermaid.tiny.min.js" defer></script>
+        <script src="/common.js" defer></script>
     </head>
     <body class="markdown-body">
         <div>
@@ -139,7 +136,6 @@ export function EditPageLayout(props: Article) {
                 <p><a href="https://k586.jp">© 2004-2026 k586.jp</a></p>
             </footer>
         </div>
-        <script src="/common.js"></script>
     </body>
 </html>`;
 }
