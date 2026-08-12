@@ -4,17 +4,21 @@ import { PageLayout, EditPageLayout } from './html';
 import type { Service } from '@cloudflare/workers-types'
 import type { K586Articles, Article } from '../../workers-db/src/index';
 
-type Bindings = {
-    K586_ARTICLES: Service<K586Articles>
+type Env = {
+    Bindings: {
+        K586_ARTICLES: Service<K586Articles>
+    },
+    Variables: {
+        nonce: string
+    }
 };
 
 function main() {
 
-    const app = new Hono();
-    const page = new Hono<{ Bindings: Bindings, Variables: { nonce: string } }>();
+    const app = new Hono<Env>();
+    const page = new Hono<Env>();
 
     app.use('*', useSecureHeaders);
-    page.use('*', useSecureHeaders);
 
     page.get('/', indexHtml);
     page.get('/article/', articleListHtml);
