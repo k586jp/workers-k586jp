@@ -19,8 +19,12 @@ async function main() {
         timeArray[i].textContent = utc.toLocaleString(undefined, timeFormat);
     }
 
-    mermaid.initialize({ securityLevel: 'loose', theme: 'dark' });
-    mermaid.run({ nodes: document.getElementsByClassName('language-mermaid') });
+    const mermaidArray = document.getElementsByClassName('language-mermaid');
+    if (mermaidArray.length > 0) {
+        await loadScript('https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js');
+        window.mermaid.initialize({ startOnLoad: false, securityLevel: 'loose', theme: 'dark' });
+        await window.mermaid.run({ nodes: document.getElementsByClassName('language-mermaid') });
+    }
 
 }
 main().catch(console.error);
@@ -39,4 +43,16 @@ function addEventListenerPromise(eventTarget, eventName) {
         eventTarget.addEventListener(eventName, function (event) { resolve(event); }, { once: true });
     });
 
+}
+
+function loadScript(src) {
+    return new Promise(function (resolve, reject) {
+        const scriptArray = document.getElementsByTagName('script');
+        const createScriptElement = document.createElement('script');
+        createScriptElement.src = src;
+        createScriptElement.nonce = scriptArray[0].getAttribute('nonce');
+        createScriptElement.onload = resolve;
+        createScriptElement.onerror = reject;
+        document.head.appendChild(createScriptElement);
+    });
 }

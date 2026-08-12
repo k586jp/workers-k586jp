@@ -45,7 +45,6 @@ export function PageLayout(props: Article[], nonce: string) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.9.0/github-markdown.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-okaidia.min.css">
         <link rel="stylesheet" href="/common.css">
-        <script nonce="${nonce}" src="https://cdn.jsdelivr.net/npm/@mermaid-js/tiny@11.12.0/dist/mermaid.tiny.min.js" defer></script>
         <script nonce="${nonce}" src="/common.js" defer></script>
     </head>
     <body class="markdown-body">
@@ -100,7 +99,6 @@ export function EditPageLayout(props: Article, nonce: string) {
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.9.0/github-markdown.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-okaidia.min.css">
         <link rel="stylesheet" href="/common.css">
-        <script nonce="${nonce}" src="https://cdn.jsdelivr.net/npm/@mermaid-js/tiny@11.12.0/dist/mermaid.tiny.min.js" defer></script>
         <script nonce="${nonce}" src="/common.js" defer></script>
     </head>
     <body class="markdown-body">
