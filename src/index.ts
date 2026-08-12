@@ -35,7 +35,7 @@ export default main();
 
 async function indexHtml(context: c) {
     const json: Article[] = await context.env.K586_ARTICLES.getArticlesTitle();
-    return context.html(PageLayout(json));
+    return context.html(PageLayout(json, context.get('nonce')));
 }
 
 async function articleListHtml(context: c) {
@@ -46,20 +46,22 @@ async function articleListHtml(context: c) {
         page = 0;
     }
     const json: Article[] = await context.env.K586_ARTICLES.getArticles(page);
-    return context.html(PageLayout(json));
+    return context.html(PageLayout(json, context.get('nonce')));
 }
 
 async function articleHtml(context: c) {
     const id = context.req.param('id');
     const json: Article[] = await context.env.K586_ARTICLES.getArticles(id);
-    return context.html(PageLayout(json));
+    return context.html(PageLayout(json, context.get('nonce')));
 }
 
 async function articleEditHtml(context: c) {
     const id = context.req.param('id');
     const json: Article = await context.env.K586_ARTICLES.getArticleEditMode(id);
-    return context.html(EditPageLayout(json));
+    return context.html(EditPageLayout(json, context.get('nonce')));
 }
+
+// ================================================================
 
 async function articleUpdPost(context: c) {
     const id = context.req.param('id');
