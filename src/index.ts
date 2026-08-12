@@ -18,14 +18,13 @@ function main() {
     const app = new Hono<Env>();
     const page = new Hono<Env>();
 
-    app.use('*', useSecureHeaders);
-
     page.get('/', indexHtml);
     page.get('/article/', articleListHtml);
     page.get('/article/:id', articleHtml);
     page.get('/article/:id/edit', articleEditHtml);
     page.post('/article/:id/edit', articleUpdPost);
 
+    app.use('*', useSecureHeaders);
     app.route('/', page);
 
     return app;
