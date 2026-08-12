@@ -5,16 +5,13 @@ import type { Service } from '@cloudflare/workers-types'
 import type { K586Articles, Article } from '../../workers-db/src/index';
 
 type Bindings = {
-    K586_ARTICLES: Service<K586Articles>,
-    Variables: {
-        nonce: string;
-    }
+    K586_ARTICLES: Service<K586Articles>
 };
 
 function main() {
 
     const app = new Hono();
-    const page = new Hono<{ Bindings: Bindings }>();
+    const page = new Hono<{ Bindings: Bindings }, { Variables: { nonce: string } }>();
 
     page.use('*', useSecureHeaders);
 
