@@ -9,13 +9,13 @@ type Env = {
         K586_ARTICLES: Service<K586Articles>
     },
     Variables: {
-        nonce: string
+        secureHeadersNonce: string
     }
 };
 
 function main() {
 
-    const app = new Hono<Env>();
+    const app = new Hono<>();
     const page = new Hono<Env>();
 
     page.use('*', useSecureHeaders);
@@ -37,7 +37,7 @@ export default main();
 
 async function indexHtml(context: c) {
     const json: Article[] = await context.env.K586_ARTICLES.getArticlesTitle();
-    return context.html(PageLayout(json, context.get('nonce')));
+    return context.html(PageLayout(json, context.get('secureHeadersNonce')));
 }
 
 async function articleListHtml(context: c) {
