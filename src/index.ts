@@ -41,11 +41,9 @@ async function indexHtml(context: c) {
 }
 
 async function articleListHtml(context: c) {
-    let page: number;
+    let page: number = 0;
     if (context.req.query('p')) {
         page = Number(context.req.query('p')) || 0;
-    } else {
-        page = 0;
     }
     const json: Article[] = await context.env.K586_ARTICLES.getArticles(page);
     return context.html(PageLayout(json, context.get('nonce')));
