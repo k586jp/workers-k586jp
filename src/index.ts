@@ -1,16 +1,22 @@
-import { Hono, Context as c } from 'hono';
+import {Hono, Context as c, Next} from 'hono';
+import { secureHeaders, NONCE } from 'hono/secure-headers';
 import { PageLayout, EditPageLayout } from './html';
 import type { Service } from '@cloudflare/workers-types'
 import type { K586Articles, Article } from '../../workers-db/src/index';
 
 type Bindings = {
-    K586_ARTICLES: Service<K586Articles>
+    K586_ARTICLES: Service<K586Articles>,
+    Variables: {
+        nonce: string;
+    }
 };
 
 function main() {
 
     const app = new Hono();
     const page = new Hono<{ Bindings: Bindings }>();
+
+    page.use('*', useSecureHeaders);
 
     page.get('/', indexHtml);
     page.get('/article/', articleListHtml);
@@ -70,3 +76,36 @@ async function articleUpdPost(context: c) {
 }
 
 // ================================================================
+
+function useSecureHeaders(context: c, next: Next) {
+    return secureHeaders({
+        strictTransportSecurity: 'max-age=31536000; includeSubDomains; preload',
+        xFrameOptions: 'DENY',
+        xContentTypeOptions: 'nosniff',
+        referrerPolicy: 'strict-origin-when-cross-origin',
+        permissionsPolicy: {
+            camera: [],
+            microphone: [],
+            geolocation: []
+        },
+        contentSecurityPolicy: {
+            scriptSrc: [
+                NONCE,
+                "'self'",
+                "'strict-dynamic'", // nonce を持ったスクリプトが生成した子スクリプトも許可
+                'https://*.cloudflare.com',
+                'https://*.cloudflareinsights.com',
+                'https://cdn.jsdelivr.net'
+            ],
+            styleSrc: [
+                "'self'",
+                'https://*.cloudflare.com'
+            ],
+            objectSrc: ["'none'"],
+            baseUri: ["'self'"],
+            formAction: ["'self'"],
+            frameAncestors: ["'none'"],
+            upgradeInsecureRequests: []
+        }
+    })(context, next);
+}
