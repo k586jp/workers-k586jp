@@ -99,6 +99,7 @@ function useSecureHeaders(context: c, next: Next) {
             ],
             styleSrc: [
                 "'self'",
+                "'unsafe-inline'",
                 'https://*.cloudflare.com'
             ],
             objectSrc: ["'none'"],
