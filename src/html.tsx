@@ -97,7 +97,7 @@ export function EditPageLayout(props: Article) {
         <meta property="og:type" content="website">
         <meta property="og:url" content="https://k586.jp/">
         <meta property="og:locale" content="ja_JP">
-        <meta http-equiv="content-security-policy" content="script-src 'self' *.cloudflare.com *.cloudflareinsights.com *.jsdelivr.net">
+        <meta http-equiv="content-security-policy" content="script-src 'self' 'sha256-C2JOhvmmMWhXDkCBRanaDF0/gO8N9RM1jVvRQIbSJxc=' *.cloudflare.com *.cloudflareinsights.com *.jsdelivr.net">
         <title>記事の編集</title>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.9.0/github-markdown.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-okaidia.min.css">
