@@ -81,6 +81,61 @@ export function PageLayout(props: Article[], nonce: string) {
 </html>`;
 }
 
+export function NewPageLayout(nonce: string) {
+    return html
+`<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta name="author" content="k586">
+        <meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <meta name="format-detection" content="telephone=no,email=no,address=no">
+        <meta name="description" content="趣味のサイト。ウェブ、音楽、漫画の話など。">
+        <meta property="og:title" content="k586.jp">
+        <meta property="og:type" content="website">
+        <meta property="og:url" content="https://k586.jp/">
+        <meta property="og:locale" content="ja_JP">
+        <title>記事の作成</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/github-markdown-css/5.9.0/github-markdown.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.30.0/themes/prism-okaidia.min.css">
+        <link rel="stylesheet" href="/common.css">
+        <script nonce="${nonce}" src="/common.js" defer></script>
+    </head>
+    <body class="markdown-body">
+        <div>
+            <header>
+                <a href="https://k586.jp">k586.jp</a>
+            </header>
+            <main id="main">
+                <div>
+                    <form action="/article/new/edit" method="POST">
+                        <p>
+                            <label for="id">記事 ID: </label>
+                            <input type="text" name="id" id="id" size="100">
+                        </p>
+                        <p>
+                            <label for="title">記事タイトル: </label>
+                            <input type="text" name="title" id="title" size="100">
+                        </p>
+                        <p>
+                            <label for="content_md">本文 (Markdown が使えます) : </label><br>
+                            <textarea name="content_md" id="content_md" rows="40" cols="120"></textarea>
+                        </p>
+                        <p>
+                            <button type="submit">投稿</button>
+                        </p>
+                    </form>
+                </div>
+            </main>
+            <footer>
+                <hr>
+                <p><a href="https://k586.jp">© 2004-2026 k586.jp</a></p>
+            </footer>
+        </div>
+    </body>
+</html>`;
+}
+
 export function EditPageLayout(props: Article, nonce: string) {
     return html
 `<!DOCTYPE html>

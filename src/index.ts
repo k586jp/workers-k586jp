@@ -1,6 +1,6 @@
 import { Hono, Context as c, Next } from 'hono';
 import { secureHeaders, NONCE, SecureHeadersVariables } from 'hono/secure-headers';
-import { PageLayout, EditPageLayout } from './html';
+import { PageLayout, NewPageLayout, EditPageLayout } from './html';
 import type { Service } from '@cloudflare/workers-types'
 import type { K586Articles, Article } from '../../workers-db/src/index';
 
@@ -21,7 +21,9 @@ function main() {
     page.get('/', indexHtml);
     page.get('/article/', articleListHtml);
     page.get('/article/:id', articleHtml);
+    page.get('/article/new/edit', articleNewHtml);
     page.get('/article/:id/edit', articleEditHtml);
+    page.post('/article/new/edit', articleNewPost);
     page.post('/article/:id/edit', articleUpdPost);
 
     app.route('/', page);
@@ -53,6 +55,10 @@ async function articleHtml(context: c) {
     return context.html(PageLayout(json, context.get('secureHeadersNonce')));
 }
 
+async function articleNewHtml(context: c) {
+    return context.html(NewPageLayout(context.get('secureHeadersNonce')));
+}
+
 async function articleEditHtml(context: c) {
     const id = context.req.param('id');
     const json: Article = await context.env.K586_ARTICLES.getArticleEditMode(id);
@@ -60,6 +66,19 @@ async function articleEditHtml(context: c) {
 }
 
 // ================================================================
+
+async function articleNewPost(context: c) {
+    const body = await context.req.parseBody();
+    let article: Article = {
+        id: String(body.id || ''),
+        is_public: true,
+        title: String(body.title || ''),
+        content_md: String(body.content_md || ''),
+        user_id: 'k586'
+    };
+    await context.env.K586_ARTICLES.updateArticle(article);
+    return context.redirect('/article/' + article.id);
+}
 
 async function articleUpdPost(context: c) {
     const id = context.req.param('id');
